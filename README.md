@@ -1,1 +1,1 @@
-# reddit-deal-watcher
+# Deal Alert
