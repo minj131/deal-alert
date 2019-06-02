@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Reddit Deal Alert</title>
+    <!-- <meta name="description" content="Simple ideas for enhancing text input interactions" />
+		<meta name="keywords" content="input, text, effect, focus, transition, interaction, inspiration, web design" /> -->
+    <!-- <meta name="author" content="Codrops" /> -->
+    <!-- <link rel="shortcut icon" href="../favicon.ico"> -->
+    <link rel="stylesheet" type="text/css" href="/static/fonts/font-awesome-4.2.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" type="text/css" href="/static/css/main.css" />
+</head>
+
+<body>
+    <div class="container animated fadeIn">
+        <section class="content bgcolor">
+            <h2>success :)</h2>
+            {% if price %}
+                <h3>your alert for keywords '{{ keywords }}' with a max price limit of '${{ price }}' has been created</h2>
+            {% else %}
+                <h3>your alert for keywords '{{ keywords }}' with any price has been created</h2>
+            {% endif %}
+            <h3>an email will be sent to you once a deal has been found. click [here] to register another set of keywords</h3>
+        </section>
+        <section class="content bgcolor">
+            <h4>
+                in the meantime, come check our deal alert site for [/r/buildapcsales]!
+            </h4>
+            <h4><a href="https://github.com/minj131/deal-alert" style="text-decoration:none">source code</a></h4>
+        </section>
+        <footer class="footer"><h4><a href="https://github.com/minj131/deal-alert" style="text-decoration:none">source code</a></h4></footer>
+    </div><!-- /container -->
+    <script src="/static/js/main.js"></script>
+</body>
+
+</html>

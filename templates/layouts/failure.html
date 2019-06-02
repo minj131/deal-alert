@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Reddit Deal Alert</title>
+    <!-- <meta name="description" content="Simple ideas for enhancing text input interactions" />
+		<meta name="keywords" content="input, text, effect, focus, transition, interaction, inspiration, web design" /> -->
+    <!-- <meta name="author" content="Codrops" /> -->
+    <!-- <link rel="shortcut icon" href="../favicon.ico"> -->
+    <link rel="stylesheet" type="text/css" href="/static/fonts/font-awesome-4.2.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" type="text/css" href="/static/css/main.css" />
+</head>
+
+<body>
+    <div class="container animated fadeIn">
+        <section class="content bgcolor">
+            <h2>failure :(</h2>
+            {% if reason == 'MAX_KEYWORDS_LIMIT' %}
+                <h3>you reached the max number of keywords allowed for your email</h3>
+                <h3>your keywords expire every 7 days. try again then!</h3>
+            {% elif reason == 'ERROR_CREATE_DOC' %}
+                <h3>there was an error registering your keywords</h3>
+                <h3>give it a sec and try again!</h3>
+            {% endif %}
+        </section>
+        <section class="content bgcolor">
+            <h4>
+                in the meantime, come check our deal alert site for /r/buildapcsales!
+            </h4>
+            <h4><a href="https://github.com/minj131/deal-alert" style="text-decoration:none">source code</a></h4>
+        </section>
+    </div><!-- /container -->
+    <script src="/static/js/main.js"></script>
+</body>
+
+</html>
