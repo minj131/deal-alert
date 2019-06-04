@@ -1,0 +1,24 @@
+{
+    "_id": {
+        "$oid": "5cf3eef568067473dd5698ac"
+    },
+    "email": "test@gmail.com",
+    "dateCreated": "2019-06-02 11:44:53",
+    "numKeywords": 3,
+    "keywords": [
+        {
+            "keywords_id": "common_projects",
+            "price": "150",
+            "notified": false,
+            "dateCreatred": "2019-06-02 11:44:53",
+            "lastTimeNotified": ""
+        },
+        {
+            "keywords_id": "ultraboosts",
+            "price": "200",
+            "notified": false,
+            "dateCreatred": "2019-06-02 11:51:50",
+            "lastTimeNotified": ""
+        }
+    ]
+}

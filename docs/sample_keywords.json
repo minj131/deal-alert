@@ -1,0 +1,24 @@
+{
+    "_id": {
+        "$oid": "5cf3eef568067473dd5698ae"
+    },
+    "keyword": "common_projects",
+    "subreddit": "frugalmalefashion",
+    "dateCreated": "2019-06-02 11:44:53",
+    "users": [
+        {
+            "email": "test3@gmail.com",
+            "price": "150",
+            "notified": false,
+            "dateCreatred": "2019-06-02 11:44:53",
+            "lastTimeNotified": ""
+        },
+        {
+            "email": "test@gmail.com",
+            "price": "250",
+            "notified": false,
+            "dateCreatred": "2019-06-02 11:59:50",
+            "lastTimeNotified": ""
+        }
+    ]
+}

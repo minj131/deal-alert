@@ -43,33 +43,40 @@ def register_keywords_user(email, keywords, price):
     # metadata
     keywords_id = keywords.replace(" ", "_")
     date = str(datetime.datetime.now()).split('.')[0]
-    numKeywords = 0
+    num_keywords = 0
+    list_keywords = []
 
     if doc == None:
         doc = db.insert_one({
             'email': email,
             'dateCreated': date,
-            'numKeywords': numKeywords,
+            'numKeywords': num_keywords,
             'keywords': []
         })
         logging.info('[INFO] Creating new user doc {} with _id: {}'.format(email, doc.inserted_id))
     else:
-        numKeywords = doc['numKeywords']
-        logging.info('[INFO] Found user doc \'{}\' with {} keywords'.format(email, numKeywords))
+        num_keywords = doc['numKeywords']
+        list_keywords = doc['keywords']
+        logging.info('[INFO] Found user doc \'{}\' with {} keywords'.format(email, num_keywords))
 
     # insert keywords info along in user doc
-    maxKeywords = 5
-    if numKeywords < maxKeywords:
-        update =  utils.update_users_doc(db, email, keywords_id, price, date)
-        if update:
-            logging.info('[INFO] Successfully created or updated doc for \'{}\''.format(email))
+    max_keywords = 5
+    if not utils.check_key_exists(list_keywords, keywords_id):
+        if num_keywords < max_keywords:
+            update =  utils.update_users_doc(db, email, keywords_id, price, date)
+            if update:
+                logging.info('[INFO] Successfully created or updated doc for \'{}\''.format(email))
+            else:
+                logging.info('[INFO] Error creating or updating doc for \'{}\''.format(email))
+                return False, 'ERROR_CREATE_DOC'
         else:
-            logging.info('[INFO] Error creating or updating doc for \'{}\''.format(email))
-            return False, 'ERROR_CREATE_DOC'
+            logging.info('[INFO] Unable to create doc for \'{}\''.format(email))
+            logging.info('[INFO] Number of keywords exceed maximum of {}'.format(max_keywords))
+            return False, 'MAX_KEYWORDS_LIMIT'
     else:
         logging.info('[INFO] Unable to create doc for \'{}\''.format(email))
-        logging.info('[INFO] Number of keywords exceed maximum of {}'.format(maxKeywords))
-        return False, 'MAX_KEYWORDS_LIMIT'
+        logging.info('[INFO] Duplicate key {} for user {}'.format(max_keywords, email))
+        return False, 'ERROR_DUPE_KEY'
 
     logging.info('[INFO] Registering keywords \'{}\' for email \'{}\' with price \'{}\''.format(keywords, email, price))
     

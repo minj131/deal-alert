@@ -42,7 +42,6 @@ def update_keywords_doc(db, id, email, price, date):
             '$push': {
                 'users': {
                     'email': email,
-                    'price': price,
                     'notified': False,
                     'dateCreatred': date,
                     'lastTimeNotified': '',
@@ -70,14 +69,21 @@ def update_users_doc(db, id, keywords_id, price, date):
             },
             '$push': {
                 'keywords': {
-                    'keywords_id': keywords_id,
-                    'price': price,
-                    'notified': False,
-                    'dateCreatred': date,
-                    'lastTimeNotified': '',
+                    keywords_id: {
+                        'price': price,
+                        'dateCreatred': date
+                    }
                 }
             }
         }, upsert=True)
         return True
     except:
         return False
+
+def check_key_exists(list, key):
+    """Checks if specified list already contains key
+
+    Keyword arguments:
+    list -- array of values
+    key -- key to search
+    """
